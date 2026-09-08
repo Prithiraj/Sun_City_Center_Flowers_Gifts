@@ -28,7 +28,7 @@ The visual direction blends the strongest ideas from the supplied references:
 - Wedding + custom floral feature
 - Sympathy + thoughtful-gifting feature
 - Shop / studio story
-- Visit / call / hours contact panel
+- Visit / call contact panel
 - Footer with shopping and business links
 
 ## Visual system
@@ -58,7 +58,6 @@ Selected themes:
 - pink roses,
 - white sympathy / wedding arrangement,
 - sunflower / cheerful bouquet,
-- bright mixed bouquet,
 - storefront / flower-shop atmosphere,
 - rose bouquet detail.
 
@@ -71,7 +70,6 @@ Photo source pages used for attribution/reference:
 - https://unsplash.com/photos/a-bouquet-of-pink-and-white-roses-kK02K5CYZW0 — Jonathan Sanchez
 - https://unsplash.com/photos/a-store-front-with-flowers-_Nu5sUQqN4I — Dario Brönnimann
 - https://unsplash.com/photos/a-flower-shop-with-many-flowers-tm6ME830ahk — Dana Sarsenbekova
-- https://unsplash.com/photos/a-vase-filled-with-orange-and-pink-flowers-M7HPRCy0Y7I — Yuliia Dementsova
 
 ## Business information
 Use the florist’s public business details:
@@ -86,34 +84,36 @@ Because opening hours and seasonal notices can change, the design avoids hard-co
 ### Files
 - `index.html` — semantic page structure and content
 - `styles.css` — complete responsive design system
-- `script.js` — mobile navigation, active-year label, lightweight interaction enhancements
+- `script.js` — mobile navigation, sticky-header state, active-year label
 - `README.md` — project notes and local preview instructions
-- `.nojekyll` — prevents Jekyll processing
-- `.github/workflows/pages.yml` — GitHub Pages deployment workflow
+- `.nojekyll` — prevents Jekyll processing on the Pages publishing branch
+- `PLAN.md` — this plan and implementation record
 
 ### External dependencies
 None required for the core experience. The implementation intentionally skips Three.js because the photo-led design is stronger and faster without a WebGL dependency; decorative motion is handled with lightweight CSS only.
 
 ## Validation checklist
-- [ ] Hero and CTAs fit comfortably at 320px width
-- [ ] Navigation drawer works with keyboard and pointer
-- [ ] All images have useful `alt` text
-- [ ] External shop links use safe `rel` values
-- [ ] Phone links use `tel:`
-- [ ] Address links open a map search
-- [ ] Focus states remain visible
-- [ ] `prefers-reduced-motion` is respected
-- [ ] No horizontal overflow at common mobile sizes
-- [ ] GitHub Pages workflow included and enabled where repository permissions allow
+- [x] Responsive breakpoints cover small mobile, mobile/tablet, and desktop layouts
+- [x] Navigation drawer is keyboard-dismissible and exposes `aria-expanded`
+- [x] All content images have descriptive `alt` text
+- [x] External shop links use `rel="noopener noreferrer"`
+- [x] Phone links use `tel:`
+- [x] Address links open a map search
+- [x] Visible focus states are included
+- [x] `prefers-reduced-motion` is respected
+- [x] Layout uses contained grids/scrollers to avoid horizontal page overflow
+- [x] Static site requires no build tooling
 
 ## Deployment
-GitHub Pages is deployed from the repository using the official Actions flow:
-1. Checkout the repository.
-2. Configure Pages.
-3. Upload the repository root as the Pages artifact.
-4. Deploy with `actions/deploy-pages`.
+The production snapshot is published from a dedicated **`gh-pages` branch**. For project repositories, creating this branch is the most direct way to activate GitHub Pages without adding a build dependency.
 
-The expected project URL is:
+Release process:
+1. Finish and review the implementation on `main`.
+2. Create/update `gh-pages` to point at the approved `main` commit.
+3. Let GitHub Pages publish the branch contents.
+4. Verify the public project URL.
+
+Expected URL:
 `https://prithiraj.github.io/Sun_City_Center_Flowers_Gifts/`
 
-If Pages is not yet enabled for this repository, the workflow attempts Pages configuration; repository settings may still require the Pages source to be set to **GitHub Actions** once by an administrator.
+For future releases, move `gh-pages` to the desired `main` commit after review.
