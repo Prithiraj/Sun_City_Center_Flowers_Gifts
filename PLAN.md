@@ -1,119 +1,129 @@
 # Sun City Center Flowers & Gifts — Website Implementation Plan
 
 ## Goal
-Build a polished, responsive static storefront for **Sun City Center Flowers & Gifts** that feels warm, local, editorial, and premium while still making the most important actions immediate: shop flowers, call the shop, find the store, and browse occasion-based arrangements.
+Build a polished, responsive, photo-first storefront for **Sun City Center Flowers & Gifts** that combines three visual ideas supplied by the user:
 
-The visual direction blends the strongest ideas from the supplied references:
-- local-florist warmth and direct contact information,
-- clean e-commerce product presentation,
-- editorial typography and generous whitespace,
-- cream / forest-green / coral palette,
-- photo-first storytelling with real floral photography.
+1. **Local florist reference** — immediate call / directions actions, strong local identity, warm shop photography, useful contact information above the fold.
+2. **Modern ecommerce reference** — clear shopping hierarchy, occasion chips, compact product/category cards, strong mobile browsing patterns, dark-green service bands.
+3. **Editorial floral-studio reference** — elegant serif display typography, cream paper tones, burgundy accents, generous whitespace, asymmetrical flower photography, refined wedding storytelling.
 
-## Product principles
-1. **Actual flower photography leads the experience.** Decorative effects support the content rather than replacing images.
-2. **Local trust is visible above the fold.** Phone, location, and local-service messaging stay easy to find.
-3. **Static-site friendly.** The site is optimized for GitHub Pages with no build step required.
-4. **Commerce routes to the existing ordering site.** This redesign acts as a high-conversion front door and sends purchase CTAs to the florist’s current ordering pages.
-5. **Mobile-first interactions.** The navigation becomes a compact drawer; cards, galleries, and contact actions remain touch-friendly.
-6. **Accessible by default.** Semantic landmarks, visible focus states, sufficient contrast, reduced-motion support, and descriptive image alt text are included.
+These references are used **only for visual direction and layout patterns**. Their names, addresses, phone numbers, opening hours, prices, delivery promises, reviews, testimonials, product names, and other invented business details are not copied into the implementation.
 
-## Information architecture
-- Announcement bar
-- Primary navigation
-- Hero: “Flowers for life’s meaningful moments”
-- Occasion quick links
-- Featured arrangements / popular picks
-- Local-service strip
-- Wedding + custom floral feature
-- Sympathy + thoughtful-gifting feature
-- Shop / studio story
-- Visit / call contact panel
-- Footer with shopping and business links
+## Source-of-truth policy
+Business facts come from the florist’s public ordering site, not from the design references.
 
-## Visual system
-### Palette
-- Forest: `#123d2c`
-- Deep forest: `#0a2a1d`
-- Cream: `#f7f1e7`
-- Warm paper: `#fffaf2`
-- Coral: `#d95f45`
-- Burgundy accent: `#7d2332`
-- Ink: `#1f241f`
+Verified source pages used during implementation:
+- https://www.flowersbysuncitycenterflowers.com/
+- https://www.flowersbysuncitycenterflowers.com/roses.php
+- https://www.flowersbysuncitycenterflowers.com/birthday.php
+- https://www.flowersbysuncitycenterflowers.com/sympathy.php
+- https://www.flowersbysuncitycenterflowers.com/custom_orders.php
+- https://www.flowersbysuncitycenterflowers.com/wedding-flowers
+- https://www.flowersbysuncitycenterflowers.com/gift-baskets
+- https://www.flowersbysuncitycenterflowers.com/gift_items.php
 
-### Typography
-- Display: Georgia / Times New Roman serif stack for a refined editorial feel without external font dependencies.
-- UI/body: system sans-serif stack for clarity and speed.
-
-### Shape & motion
-- Soft radii, thin warm borders, restrained shadows.
-- Subtle image zoom, button lift, and floral-line ornament motion.
-- Motion is disabled when `prefers-reduced-motion` is enabled.
-
-## Photography
-Real photography is sourced from free-to-use Unsplash images and loaded responsively from `images.unsplash.com`.
-
-Selected themes:
-- hero: mixed pastel bouquets,
-- pink roses,
-- white sympathy / wedding arrangement,
-- sunflower / cheerful bouquet,
-- storefront / flower-shop atmosphere,
-- rose bouquet detail.
-
-Photo source pages used for attribution/reference:
-- https://unsplash.com/photos/assortment-of-colorful-floral-bouquets-for-sale-npK-to-rbaI — Esra Afşar
-- https://unsplash.com/photos/a-bouquet-of-white-flowers-sitting-on-top-of-a-wooden-table-K4nCahsnHtg — Katelynn English
-- https://unsplash.com/photos/person-holding-yellow-sunflower-bouquet-IumYcPp3Ti4 — Courtney Cook
-- https://unsplash.com/photos/pink-roses-in-vase-mjtc0khBqls — Annie Spratt
-- https://unsplash.com/photos/pink-roses-in-clear-glass-vase-oKTbuBOyz_E — Kitera Dent
-- https://unsplash.com/photos/a-bouquet-of-pink-and-white-roses-kK02K5CYZW0 — Jonathan Sanchez
-- https://unsplash.com/photos/a-store-front-with-flowers-_Nu5sUQqN4I — Dario Brönnimann
-- https://unsplash.com/photos/a-flower-shop-with-many-flowers-tm6ME830ahk — Dana Sarsenbekova
-
-## Business information
-Use the florist’s public business details:
+Verified business details used in the page:
 - **Sun City Center Flowers & Gifts**
 - **1607 Sun City Center Plaza, Sun City Center, FL 33573**
 - **Local:** (813) 634-2824
 - **Toll-free:** (800) 842-5069
+- The shop lists flowers for delivery in Sun City Center and surrounding areas.
+- The shop lists roses, birthday flowers, sympathy flowers, wedding flowers, gift baskets, gift items, and custom flower designs.
 
-Because opening hours and seasonal notices can change, the design avoids hard-coding a potentially stale “open now” promise and instead encourages visitors to call for today’s hours.
+### Deliberately not hard-coded
+The site does not present fixed hours, “open now” status, fixed delivery cut-off times, guaranteed same-day delivery, customer testimonials, or product pricing. These can change. Visitors are directed to the florist’s live ordering site or asked to call for current information.
 
-## Implementation
-### Files
-- `index.html` — semantic page structure and content
-- `styles.css` — complete responsive design system
-- `script.js` — mobile navigation, sticky-header state, active-year label
-- `README.md` — project notes and local preview instructions
-- `.nojekyll` — prevents Jekyll processing on the Pages publishing branch
-- `PLAN.md` — this plan and implementation record
+## Product principles
+1. **Real flower photography leads the design.** The implementation uses real photographic imagery; CSS ornamentation only complements the photos.
+2. **Local trust is immediate.** Phone, address, directions, and online-order links appear above the fold.
+3. **Commerce stays authoritative.** Category cards route directly to the florist’s current ordering pages rather than duplicating dynamic inventory or pricing.
+4. **Editorial, not ornamental overload.** Large serif headlines, paper tones, botanical spacing, and asymmetrical image layouts create the premium feel.
+5. **Mobile is a first-class layout.** The navigation becomes a drawer, category cards remain scannable, horizontal occasion chips are touch-friendly, and a bottom action bar exposes Call / Shop / Directions.
+6. **Accessible by default.** Semantic structure, alt text, focus states, keyboard-dismissible navigation, and reduced-motion support are included.
+7. **Static-site friendly.** No build step and no runtime framework are required for GitHub Pages.
 
-### External dependencies
-None required for the core experience. The implementation intentionally skips Three.js because the photo-led design is stronger and faster without a WebGL dependency; decorative motion is handled with lightweight CSS only.
+## Information architecture
+- Announcement bar with location + call-to-confirm message
+- Primary navigation
+- Editorial split hero with two real flower photos
+- Above-the-fold phone / address / shop-online strip
+- Occasion chips
+- Four-category ecommerce grid: Roses, Birthday, Sympathy, Custom Flower Design
+- Local delivery information banner
+- Wedding editorial feature
+- Gift baskets / gift items / custom design feature
+- Visit-the-shop image collage + verified address / phone card
+- Direct-contact callout
+- Footer with verified category and service links
+- Mobile Call / Shop / Directions action bar
+
+## Visual system
+### Palette
+- Deep forest: `#103526`
+- Forest: `#174a35`
+- Cream: `#f7f0e6`
+- Warm paper: `#fffaf4`
+- Coral: `#d66045`
+- Burgundy: `#7a2831`
+- Ink: `#202520`
+
+### Typography
+- Display: an editorial system serif stack (`Iowan Old Style`, `Palatino`, `Baskerville`, `Georgia`).
+- UI/body: system sans-serif stack for clarity and loading speed.
+
+### Shape and motion
+- Soft but restrained radii.
+- Thin warm borders and low-contrast shadows.
+- Subtle image zoom / button lift on pointer devices.
+- All transitions collapse under `prefers-reduced-motion`.
+
+## Photography
+Actual flower and florist photography is loaded from `images.unsplash.com` and credited to Unsplash contributors in the site footer.
+
+The image set covers:
+- pastel mixed florist display,
+- rose detail,
+- bright sunflower bouquet,
+- white floral arrangement,
+- custom-style peach/pink arrangement,
+- wedding bouquet,
+- flower shop interior,
+- flower storefront.
+
+No generated image is used as a replacement for real shop/floral photography in this implementation. Three.js is not used because it would not improve the photo-led experience enough to justify the extra weight; CSS decorative details are intentionally subordinate to the photographs.
+
+## Implementation files
+- `index.html` — semantic storefront and verified business content
+- `styles.css` — responsive visual system matching the three reference directions
+- `script.js` — accessible mobile navigation, sticky-header state, active year
+- `PLAN.md` — design rationale, source-of-truth rules, and deployment record
+- `README.md` — project summary and local preview instructions
+- `.nojekyll` — keeps GitHub Pages from applying Jekyll processing
 
 ## Validation checklist
-- [x] Responsive breakpoints cover small mobile, mobile/tablet, and desktop layouts
-- [x] Navigation drawer is keyboard-dismissible and exposes `aria-expanded`
+- [x] Reference images used only for visual direction
+- [x] No invented address, phone, hours, pricing, reviews, or delivery guarantees copied from reference comps
+- [x] Business identity/address/phone verified against official florist site
+- [x] Category/service links point to existing florist pages
+- [x] Real photography remains the primary visual content
+- [x] Responsive breakpoints cover desktop, tablet, and small mobile
+- [x] Mobile navigation exposes `aria-expanded` and closes with Escape
 - [x] All content images have descriptive `alt` text
-- [x] External shop links use `rel="noopener noreferrer"`
-- [x] Phone links use `tel:`
-- [x] Address links open a map search
-- [x] Visible focus states are included
-- [x] `prefers-reduced-motion` is respected
-- [x] Layout uses contained grids/scrollers to avoid horizontal page overflow
-- [x] Static site requires no build tooling
+- [x] External links use `rel="noopener noreferrer"`
+- [x] Phone actions use `tel:`
+- [x] Directions link targets the verified address
+- [x] Visible keyboard focus states included
+- [x] `prefers-reduced-motion` respected
+- [x] No build tooling required
 
 ## Deployment
-The production snapshot is published from a dedicated **`gh-pages` branch**. For project repositories, creating this branch is the most direct way to activate GitHub Pages without adding a build dependency.
+The static site is released to the repository’s `gh-pages` branch for GitHub Pages hosting.
 
-Release process:
-1. Finish and review the implementation on `main`.
-2. Create/update `gh-pages` to point at the approved `main` commit.
-3. Let GitHub Pages publish the branch contents.
-4. Verify the public project URL.
+Release workflow:
+1. Implement and review changes on `main`.
+2. Mirror the approved `index.html`, `styles.css`, `script.js`, `PLAN.md`, `README.md`, and `.nojekyll` files to `gh-pages`.
+3. GitHub Pages publishes the branch when repository Pages settings are configured for `gh-pages` / root.
+4. Verify the public project URL after the Pages deployment is active.
 
-Expected URL:
+Expected project URL:
 `https://prithiraj.github.io/Sun_City_Center_Flowers_Gifts/`
-
-For future releases, move `gh-pages` to the desired `main` commit after review.
